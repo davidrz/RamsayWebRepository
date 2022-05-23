@@ -1,1 +1,25 @@
-<p>student-list works!</p>
+<div class="student-container">
+    <h3>
+        LIST STUDENTS
+    </h3>
+    <h2 style="text-align: center;">List Students</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>UserName</th>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Age</th>
+            <th>Career</th>
+        </tr>
+        <tr *ngFor="let student of students; index as i">
+            <td>{{ i }}</td>
+            <td>{{ student.userName }}</td>
+            <td>{{ student.firstName }}</td>
+            <td>{{ student.lastName }}</td>
+            <td>{{ student.age }}</td>
+            <td>{{ student.career }}</td>
+        </tr>
+    </table>
+</div> 
+

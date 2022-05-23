@@ -3,9 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { MenuModule } from './menu/menu.module';
-import { StudentModule } from './student/student.module';
 import { AppRoutingModule } from './app-routing.module';
-import { HomeModule } from './home/home.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -14,9 +13,8 @@ import { HomeModule } from './home/home.module';
   imports: [
     BrowserModule,
     MenuModule,
-    StudentModule,
     AppRoutingModule,
-    HomeModule
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
