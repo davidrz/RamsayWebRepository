@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Student } from '../models/student';
 import { StudentListService } from './student-list.service';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { NewStudentComponent } from '../new-student/new-student.component';
 
 @Component({
   selector: 'app-student-list',
@@ -11,9 +13,7 @@ import { StudentListService } from './student-list.service';
 export class StudentListComponent implements OnInit {
 
   students: Student[] = [];
-  headers = ["ID", "User Name", "First Name", "Last Name", "Age", "Career"];
-  
-  constructor(private studentService: StudentListService) { 
+  constructor(private studentService: StudentListService, public dialog: MatDialog) { 
     
   }
 
@@ -24,8 +24,19 @@ export class StudentListComponent implements OnInit {
   getStudents(): void {
     this.studentService.getStudentList()
         .subscribe(
-          response => this.students = response
+          (response: Student[]) => this.students = response
         ); 
   }
 
+  newStudent(): void {
+    const dialogRef = this.dialog.open(NewStudentComponent, {
+      width: '1000px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
 }
+
