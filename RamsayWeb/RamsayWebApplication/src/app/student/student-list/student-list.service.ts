@@ -16,4 +16,8 @@ export class StudentListService {
   getStudentList(): Observable<Student[]>{
     return this.http.get<Student[]>(`${environment.urlService}/Student/GetStudents`)
   }
+
+  deleteStudent(data: number): Observable<any>{
+    return this.http.delete<any>(`${environment.urlService}/Student/DeleteStudent/${data}`)
+  }
 }

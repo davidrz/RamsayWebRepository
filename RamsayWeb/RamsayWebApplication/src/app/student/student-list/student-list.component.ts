@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Student } from '../models/student';
 import { StudentListService } from './student-list.service';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NewStudentComponent } from '../new-student/new-student.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-student-list',
@@ -13,19 +14,19 @@ import { NewStudentComponent } from '../new-student/new-student.component';
 export class StudentListComponent implements OnInit {
 
   students: Student[] = [];
-  constructor(private studentService: StudentListService, public dialog: MatDialog) { 
-    
+  constructor(private studentService: StudentListService, public dialog: MatDialog) {
+
   }
 
   ngOnInit(): void {
     this.getStudents();
   }
-  
+
   getStudents(): void {
     this.studentService.getStudentList()
-        .subscribe(
-          (response: Student[]) => this.students = response
-        ); 
+      .subscribe(
+        (response: Student[]) => this.students = response
+      );
   }
 
   newStudent(): void {
@@ -38,5 +39,12 @@ export class StudentListComponent implements OnInit {
     });
   }
 
+  deleteStudent(student: number): void {
+    this.studentService.deleteStudent(student)
+      .subscribe(response => {
+        this.getStudents();
+        console.log("deleted Sucesfully")
+      })
+  }
 }
 

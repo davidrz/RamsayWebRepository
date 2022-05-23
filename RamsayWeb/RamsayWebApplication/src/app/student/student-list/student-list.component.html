@@ -6,20 +6,19 @@
     <h2 style="text-align: center;">LIST STUDENTS</h2>
     <table>
         <tr>
-            <th>ID</th>
             <th>UserName</th>
-            <th>FirstName</th>
-            <th>LastName</th>
+            <th>First Name</th>
+            <th>Last Name</th>
             <th>Age</th>
             <th>Career</th>
         </tr>
         <tr *ngFor="let student of students; index as i">
-            <td>{{ i }}</td>
             <td>{{ student.userName }}</td>
             <td>{{ student.firstName }}</td>
             <td>{{ student.lastName }}</td>
             <td>{{ student.age }}</td>
             <td>{{ student.career }}</td>
+            <button id="remove" (click)="deleteStudent(student.id)">delete Row</button>
         </tr>
     </table>
 </div> 
