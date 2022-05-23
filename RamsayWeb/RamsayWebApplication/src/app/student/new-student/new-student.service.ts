@@ -13,7 +13,7 @@ export class NewStudentService {
 
   }
 
-  saveStudent(data: AddStudent): Observable<Response>{
+  saveStudent(data: any): Observable<Response>{
     data.id = undefined;
     return this.http.post(`${environment.urlService}/Student/CreateStudent`, data)
     .pipe(

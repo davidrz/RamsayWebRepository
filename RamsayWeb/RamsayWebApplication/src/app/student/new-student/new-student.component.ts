@@ -19,7 +19,7 @@ export class NewStudentComponent implements OnInit {
     career: new FormControl('')
   });
 
-  student : AddStudent = new AddStudent;
+  student: AddStudent = new AddStudent;
   submitted = false;
 
   constructor(private formBuilder: FormBuilder, private studentService: NewStudentService) { }
@@ -54,7 +54,7 @@ export class NewStudentComponent implements OnInit {
           [
             Validators.required, Validators.maxLength(20)
           ]
-          ]
+        ]
       }
     );
   }
@@ -64,16 +64,22 @@ export class NewStudentComponent implements OnInit {
   }
 
   saveStudent(): void {
-    debugger;
     this.submitted = true;
     if (this.form.invalid) {
       return;
     }
-    
-    const student = Object.assign({}, this.student, this.form.value);
+
+    let student = {
+      "UserName": this.form.value.userName,
+      "FirstName": this.form.value.firstName,
+      "LastName": this.form.value.lastName,
+      "Age": +this.form.value.age,
+      "Career": this.form.value.career
+    }
+
     this.studentService.saveStudent(student)
       .subscribe(response => {
-        console.log('saved succesfully')
+        this.form.reset();
       })
   }
   onReset(): void {
