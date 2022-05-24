@@ -1,6 +1,6 @@
 <div class="student-container">
     <div>
-        <button (click)="newStudent()"> Create Student</button>
+        <button (click)="newStudent()" class="btn btn-dark"> Create Student</button>
     </div>
 
     <h2 style="text-align: center;">LIST STUDENTS</h2>
@@ -18,7 +18,7 @@
             <td>{{ student.lastName }}</td>
             <td>{{ student.age }}</td>
             <td>{{ student.career }}</td>
-            <button id="remove" (click)="deleteStudent(student.id)">delete Row</button>
+            <button id="remove" (click)="deleteStudent(student.id)" class="btn btn-primary">Delete</button>
         </tr>
     </table>
 </div> 
